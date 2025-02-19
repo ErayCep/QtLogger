@@ -29,13 +29,13 @@ public slots:
 private:
     QFile* m_logFile;
     QTimer* m_timer;
+
     QTextStream m_logBuffer;
     QString m_logData;
-    QString m_dateString;
+
     LogCategory m_logCategory;
     int m_logInterval;
     QDateTime m_startDate;
-    QDateTime m_currentDate;
 signals:
 };
 
