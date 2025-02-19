@@ -51,6 +51,7 @@ Logger::Logger(QObject *parent)
 }
 
 Logger::~Logger() {
+    // If logger goes out of scope, flush buffer to file.
     intervalLoggerFunction();
 }
 
@@ -87,10 +88,8 @@ void Logger::readConfigurationFile() {
 }
 
 void Logger::intervalLoggerFunction() {
-    //QMutexLocker locker(&m_mutex);
-
     if (m_logData.isEmpty()) {
-        return; // No logs to write
+        return;
     }
 
     QString logFileName = QDateTime::currentDateTimeUtc().toString("dd.MM.yyyy") + "_log.txt";
@@ -109,6 +108,5 @@ void Logger::intervalLoggerFunction() {
 
 void Logger::LOG_INFO(const QString& logString) {
     m_logBuffer << QDateTime::currentDateTimeUtc().toString("dd.MM.yyyy hh:mm:ss")
-                << ": " << logString << "\n"; // Added newline for readability
-    qDebug() << "hello"; // Debug output to confirm logging
+                << ": " << logString << "\n";
 }
