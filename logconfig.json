@@ -1,0 +1,7 @@
+{
+    "logTimer":  {
+	"logCategory": "seconds",
+	"logInterval": "2",
+	"logMaximum": "7"
+    }
+}

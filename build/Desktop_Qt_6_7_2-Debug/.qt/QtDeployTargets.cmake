@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_loggerlib_FILE /home/wallog/loggerlib/build/Desktop_Qt_6_7_2-Debug/loggerlib)
+set(__QT_DEPLOY_TARGET_loggerlib_TYPE EXECUTABLE)

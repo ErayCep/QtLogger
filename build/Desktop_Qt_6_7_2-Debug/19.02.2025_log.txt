@@ -1,0 +1,4 @@
+19.02.2025: json configuration file read!
+19.02.2025: logger initialized
+19.02.2025 18:57:37: first log
+19.02.2025 18:57:37: seconds log
