@@ -35,6 +35,7 @@ private:
 
     LogCategory m_logCategory;
     int m_logInterval;
+    int m_logFileDays;
     QDateTime m_startDate;
 signals:
 };

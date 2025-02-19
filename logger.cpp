@@ -69,6 +69,7 @@ void Logger::readConfigurationFile() {
         qDebug() << value;
         QJsonObject item = value.toObject();
         m_logInterval = item["logInterval"].toString().toInt();
+        m_logFileDays = item["logMaximum"].toString().toInt();
         qDebug() << m_logInterval;
         if (item["logCategory"].toString().compare("days") == 0) {
             m_logCategory = Days;
@@ -88,6 +89,11 @@ void Logger::readConfigurationFile() {
 }
 
 void Logger::intervalLoggerFunction() {
+    if (m_startDate.daysTo(QDateTime::currentDateTimeUtc()) > m_logFileDays) {
+        QFile file(m_startDate.toString("dd.MM.yyyy") + "_log.txt");
+        file.remove();
+        m_startDate = m_startDate.addDays(1);
+    }
     if (m_logData.isEmpty()) {
         return;
     }
@@ -103,7 +109,6 @@ void Logger::intervalLoggerFunction() {
     } else {
         qDebug() << "Error opening log file:" << logFile.errorString();
     }
-
 }
 
 void Logger::LOG_INFO(const QString& logString) {
